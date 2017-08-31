@@ -1,5 +1,5 @@
 import pandas as pd
-pd.set_option('display.max_columns', None)
+# pd.set_option('display.max_columns', None)
 
 def zipcode_simplifier(df):
     df['ZipCode_reduced'] = df['ZipCode'].map(lambda x: str(x)[:5])

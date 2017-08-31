@@ -1,5 +1,5 @@
 import pandas as pd
-pd.set_option('display.max_columns', None)
+# pd.set_option('display.max_columns', None)
 
 def load_data():
     parcel_w_school = pd.read_csv('./Data/Parcel_w_ES_MS_HS_Districts.csv', delimiter=',')
