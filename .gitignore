@@ -1,5 +1,5 @@
-Data/EXTR_RPSale.csv
-Data/EXTR_ResBldg.csv
+data/EXTR_RPSale.csv
+data/EXTR_ResBldg.csv
 
 *.pyc
 *.ipynb_checkpoints
