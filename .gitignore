@@ -1,0 +1,8 @@
+Data/EXTR_RPSale.csv
+Data/EXTR_ResBldg.csv
+
+*.pyc
+*.ipynb_checkpoints
+DS_Store
+
+.~lock.*
