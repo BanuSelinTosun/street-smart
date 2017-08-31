@@ -38,7 +38,7 @@ def load_data():
     res_RE_w_school = pd.merge(df_res_Real_est, df_parcel_school, on='parcel_number', how='inner', suffixes=('_1', '_2'))
     del(df_parcel_school)
     del(df_res_Real_est)
-    res_RE_w_school.drop(['ZIP5', 'CTYNAME', 'LAT', 'LON', 'POINT_X', 'POINT_Y', 'PLAT_NAME', 'KCTP_PAR', 'CONDOSITUS', 'FULLNAME'], inplace = True, axis=1)
+    res_RE_w_school.drop(['ZIP5', 'CTYNAME', 'LAT', 'LON', 'POINT_X', 'POINT_Y', 'PLAT_NAME', 'KCTP_PAR', 'CONDOSITUS', 'FULLNAME', 'OBJECTID', 'PropertyType', 'PropertyClass', 'PrincipalUse', 'PIN', 'Shape_Leng', 'Shape_Area', 'isSeattle', 'BldgNbr', 'BuildingNumber', 'Fraction', 'BldgGradeVar', 'PcntComplete', 'Obsolescence', 'PcntNetCondition'], inplace = True, axis=1)
     res_RE_w_school = create_ES_rating(res_RE_w_school)
     res_RE_w_school = create_MS_rating(res_RE_w_school)
     res_RE_w_school = create_HS_rating(res_RE_w_school)
