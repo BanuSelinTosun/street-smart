@@ -26,7 +26,7 @@ def load_data():
     subset_df = df.drop(['Address', 'StreetName', 'StreetType', 'SellerName', 'BuyerName', 'DirectionSuffix',
                      'SaleWarning', 'ZipCode_reduced', 'parcel_number', 'PROP_NAME', 'ES_ZONE', 'MS_ZONE',
                      'HS_ZONE', 'LEVY_JURIS', 'DocumentDate', 'SalePrice', 'AddnlCost', 'ExciseTaxNbr',
-                     'BldgGrade', 'SaleReason', 'SaleInstrument'], axis=1)
+                     'BldgGrade', 'SaleReason', 'SaleInstrument', 'FinBasementGrade'], axis=1)
     y = subset_df.TotalCost
     X = subset_df.drop('TotalCost', axis=1)
     return X, y
