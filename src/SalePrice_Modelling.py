@@ -20,6 +20,14 @@ def modelling(X, y):
     error = abs(1 - np.exp(sum(abs(residuals))/len(y_predict)))*100
     return score, Model, y_predict, residuals, error
 
+def NumLivingUnits_check(df):
+    df = df[df.NbrLivingUnits <= 2]
+    return df
+
+def SqFTLiving_check(df):
+    df = df[df.SqFtTotLiving > 500]
+    return df
+
 def HeatSystem_converter(df):
     HeatSystem_dummies = pd.get_dummies(df.HeatSystem, drop_first=False, prefix='HeatSystem')
     df = pd.concat([df, HeatSystem_dummies], axis=1).drop('HeatSystem', axis=1)
@@ -45,7 +53,7 @@ def Zipcode_converter(df):
 def load_data():
     df = pd.read_pickle('ResAss_w_PbSch_Rtngs_Clnd_df.p')
     df['Zipcode'] = df['ZipCode_reduced'].astype(int)
-    df['Documentation_YearAge'] = 2017 - df['DocumentDate'].dt.year
+    df['Documentation_YearAge'] = 2017.0 - df['DocumentDate'].dt.year
     df['Documentation_month'] = df['DocumentDate'].dt.month
     df = df[df.Documentation_YearAge <= 1]
     df['TotalCost'] = df['SalePrice'] + df['AddnlCost']
@@ -60,6 +68,8 @@ def load_data():
     df = SaleWarning_conv(df)
     df = HeatSource_converter(df)
     df = HeatSystem_converter(df)
+    df = SqFTLiving_check(df)
+    df = NumLivingUnits_check(df)
     y = df.TotalCost
     X = df.drop('TotalCost', axis=1)
     del(df)
