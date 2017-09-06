@@ -33,8 +33,8 @@ def create_HS_rating(df):
     return df
 
 def load_data():
-    df_parcel_school = pd.read_pickle('parcel_school_cleaned_df.p')
-    df_res_Real_est = pd.read_pickle('cleaned_df.p')
+    df_parcel_school = pd.read_pickle('./src/parcel_school_cleaned_df.p')
+    df_res_Real_est = pd.read_pickle('./src/cleaned_df.p')
     res_RE_w_school = pd.merge(df_res_Real_est, df_parcel_school, on='parcel_number', how='inner', suffixes=('_1', '_2'))
     del(df_parcel_school)
     del(df_res_Real_est)

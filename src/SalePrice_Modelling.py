@@ -64,7 +64,7 @@ def Zipcode_converter(df):
     return df
 
 def load_data():
-    df = pd.read_pickle('ResAss_w_PbSch_Rtngs_Clnd_df.p')
+    df = pd.read_pickle('./src/ResAss_w_PbSch_Rtngs_Clnd_df.p')
     df['Documentation_YearAge'] = 2017.0 - df['DocumentDate'].dt.year
     df['Documentation_month'] = df['DocumentDate'].dt.month
     df.drop(['DocumentDate'], axis=1, inplace=True)

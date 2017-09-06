@@ -112,9 +112,9 @@ def only_Seattle(df):
     return df
 
 def load_data():
-    resbldg = pd.read_csv('Data/EXTR_ResBldg.csv', delimiter=',')
+    resbldg = pd.read_csv('data/EXTR_ResBldg.csv', delimiter=',')
     resbldg['parcel_number'] = resbldg.apply(lambda x:'%s-%s' % (x['Major'],x['Minor']),axis=1)
-    rpsale = pd.read_csv('Data/EXTR_RPSale.csv', delimiter=',')
+    rpsale = pd.read_csv('data/EXTR_RPSale.csv', delimiter=',')
     rpsale['parcel_number'] = rpsale.apply(lambda x:'%s-%s' % (x['Major'],x['Minor']),axis=1)
     res_bldg_sale = pd.merge(resbldg, rpsale, on='parcel_number', how='inner', suffixes=('_1', '_2'))
     del(rpsale)

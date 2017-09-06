@@ -40,7 +40,7 @@ def subsetting(Matrix, SqFtLiving=700, Bedrooms=1):
 
 
 def load_data(SqFtLiving, Bedrooms):
-    Matrix = pd.read_pickle('Predicted_Matrix.p')
+    Matrix = pd.read_pickle('./src/Predicted_Matrix.p')
     Output = subsetting(Matrix, SqFtLiving, Bedrooms)
     return Output
 
