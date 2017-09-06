@@ -39,8 +39,7 @@ def load_data():
     del(df_parcel_school)
     del(df_res_Real_est)
     res_RE_w_school['Zipcode'] = res_RE_w_school['ZipCode_reduced'].astype(int)
-    res_RE_w_school.drop(['ZIP5', 'CTYNAME', 'LAT', 'LON', 'POINT_X', 'POINT_Y', 'PLAT_NAME', 'KCTP_PAR', 'CONDOSITUS', 'FULLNAME', 'OBJECTID', 'PropertyType', 'PropertyClass', 'PrincipalUse', 'PIN', 'Shape_Leng', 'Shape_Area',
-    'isSeattle', 'BldgNbr', 'BuildingNumber', 'Fraction', 'BldgGradeVar', 'PcntComplete', 'Obsolescence', 'PcntNetCondition', 'ZipCode_reduced'], inplace = True, axis=1)
+    res_RE_w_school.drop(['ZIP5', 'CTYNAME', 'LAT', 'LON', 'POINT_X', 'POINT_Y', 'PLAT_NAME', 'KCTP_PAR', 'CONDOSITUS', 'FULLNAME', 'OBJECTID', 'PropertyType', 'PropertyClass', 'PrincipalUse', 'PIN', 'Shape_Leng', 'Shape_Area', 'isSeattle', 'BldgNbr', 'BuildingNumber', 'Fraction', 'BldgGradeVar', 'PcntComplete', 'Obsolescence', 'PcntNetCondition', 'ZipCode_reduced'], inplace = True, axis=1)
     res_RE_w_school = create_ES_rating(res_RE_w_school)
     res_RE_w_school = create_MS_rating(res_RE_w_school)
     res_RE_w_school = create_HS_rating(res_RE_w_school)

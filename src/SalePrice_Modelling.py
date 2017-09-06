@@ -2,14 +2,19 @@ import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 import numpy as np
+pd.set_option('display.max_columns', None)
 
-def feature_importance_cal(Model):
-    importances = Model.feature_importances_
-    std = np.std([tree.feature_importances_ for tree in FSM.estimators_], axis=0)
-    indices = np.argsort(importances)[::-1]
-    return importances[indices]
+#def feature_importance_cal(Model):
+#    importances = Model.feature_importances_
+#    std = np.std([tree.feature_importances_ for tree in FSM.estimators_], axis=0)
+#    indices = np.argsort(importances)[::-1]
+#    return importances[indices]
 
-def modelling(X, y):
+def new_prediction_matrix(df):
+    df['Documentation_YearAge'] = 0
+    return df
+
+def modelling_predicting(X, y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=42)
     Model = RandomForestRegressor(n_estimators=300, n_jobs=-1, random_state=0)
     Model.fit(X_train, y_train)
@@ -18,7 +23,15 @@ def modelling(X, y):
     y_true = y_test.as_matrix()
     residuals = np.log(y_true) - np.log(y_predict)
     error = abs(1 - np.exp(sum(abs(residuals))/len(y_predict)))*100
-    return score, Model, y_predict, residuals, error
+    Matrix = new_prediction_matrix(X)
+    del(X)
+    del(X_train)
+    del(X_test)
+    del(y_train)
+    del(y_test)
+    y_sales = Model.predict(Matrix).astype(int)
+    Matrix['TotalCost'] = y_sales
+    return Matrix, error
 
 def NumLivingUnits_check(df):
     df = df[df.NbrLivingUnits <= 2]
@@ -52,24 +65,23 @@ def Zipcode_converter(df):
 
 def load_data():
     df = pd.read_pickle('ResAss_w_PbSch_Rtngs_Clnd_df.p')
-    df['Zipcode'] = df['ZipCode_reduced'].astype(int)
     df['Documentation_YearAge'] = 2017.0 - df['DocumentDate'].dt.year
     df['Documentation_month'] = df['DocumentDate'].dt.month
-    df = df[df.Documentation_YearAge <= 1]
+    df.drop(['DocumentDate'], axis=1, inplace=True)
+    # df = df[df.Documentation_YearAge <= 1]
     df['TotalCost'] = df['SalePrice'] + df['AddnlCost']
-    uplimit = min(df.TotalCost.mean() + df.TotalCost.std()*3.5, 2000000)
-    bottomlimit = 100000 # min(abs(df.TotalCost.mean() - df.TotalCost.std()*4), df.TotalCost.min())
-    df = df[(df.TotalCost > bottomlimit) & (df.TotalCost < uplimit)]
-    df = df.drop(['Address', 'StreetName', 'StreetType', 'SellerName', 'BuyerName', 'DirectionSuffix', 
-         'parcel_number', 'PROP_NAME', 'ES_ZONE', 'MS_ZONE', 'HS_ZONE', 'LEVY_JURIS', 'SalePrice', 
-         'AddnlCost', 'ExciseTaxNbr', 'BldgGrade', 'SaleReason', 'SaleInstrument', 'FinBasementGrade', 
-         'ZipCode_reduced', 'DocumentDate'], axis=1, inplace=True)
-    df = Zipcode_converter(df)
     df = SaleWarning_conv(df)
+    df = Zipcode_converter(df)
     df = HeatSource_converter(df)
     df = HeatSystem_converter(df)
     df = SqFTLiving_check(df)
     df = NumLivingUnits_check(df)
+    df.drop(['Address', 'StreetName', 'StreetType', 'SellerName', 'BuyerName', 'DirectionSuffix', 
+         'parcel_number', 'PROP_NAME', 'ES_ZONE', 'MS_ZONE', 'HS_ZONE', 'LEVY_JURIS', 'SalePrice', 
+         'AddnlCost', 'ExciseTaxNbr', 'BldgGrade', 'SaleReason', 'SaleInstrument', 'FinBasementGrade'], axis=1, inplace=True)
+    uplimit = min(df.TotalCost.mean() + df.TotalCost.std()*4, 2000000)
+    bottomlimit = 100000 # min(abs(df.TotalCost.mean() - df.TotalCost.std()*4), df.TotalCost.min())
+    df = df[(df.TotalCost > bottomlimit) & (df.TotalCost < uplimit)]
     y = df.TotalCost
     X = df.drop('TotalCost', axis=1)
     del(df)
@@ -77,8 +89,9 @@ def load_data():
 
 def main():
     X, y = load_data()
-    score, Model, predicted_cost, residuals, error = modelling(X, y)
-    return 'Model Fit Score:', score, 'Model:', Model, 'predicted_cost:', predicted_cost, 'Error:', error
+    Matrix, error = modelling_predicting(X, y)
+    Matrix.to_pickle('Predicted_Matrix.p')
+    print 'Error:', error
 
 if __name__=="__main__":
     main()
