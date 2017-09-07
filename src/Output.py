@@ -77,6 +77,7 @@ def subsetting(Matrix, age_lst, SqFtLiving=700, Bedrooms=1):
     Seattle_Zipcodes = [98102, 98103, 98104, 98105, 98106, 98107, 98108, 98109, 98112, 98115, 98116, 98117, 98118, 98119, 98122, 98125, 98126, 98133, 98136, 
                     98144, 98146, 98177, 98178, 98199]
     total_edu_cost = total_kids_edu(age_lst)
+    print "{:5s}  {:4s} {:10s}   {:10s}  {:10s}  {:3s} {:3s} {:3s} {:10s}".format('Zip', 'Num', 'Min Cost', 'Ave Cost','Max Cost', 'ES', 'MS', 'HS', 'PrEdu Cst')
     for code, matrix in zip(Seattle_Zipcodes, zipcode_lst):
         if len(matrix)!=0:
             print "{:5d} {:4d} {:10.2f} < {:10.2f} < {:10.2f} {:3.0f} {:3.0f} {:3.0f} {:10.2f}".format(code, len(matrix), 
