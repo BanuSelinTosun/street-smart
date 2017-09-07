@@ -63,10 +63,10 @@ def subsetting(Matrix, SqFtLiving=700, Bedrooms=1):
 def output_app(Matrix, age_lst, SqFtLiving, Bedrooms):
     Zipcode_Matrix = subsetting(Matrix, SqFtLiving, Bedrooms)
     total_edu_cost = total_kids_edu(age_lst)
-    print "{:5s}  {:4s} {:10s}   {:10s}  {:10s}  {:3s} {:3s} {:3s} {:10s}".format('Zip', 'Num', 'Min Cost', 'Ave Cost','Max Cost', 'ES', 'MS', 'HS', 'PrEdu Cst')
+    yield "{:5s}  {:4s} {:10s}   {:10s}  {:10s}  {:3s} {:3s} {:3s} {:10s}".format('Zip', 'Num', 'Min Cost', 'Ave Cost','Max Cost', 'ES', 'MS', 'HS', 'PrEdu Cst')
     for code, matrix in Zipcode_Matrix.items():
         if len(matrix)!=0:
-            print "{:5d} {:4d} {:10.2f} < {:10.2f} < {:10.2f} {:3.0f} {:3.0f} {:3.0f} {:10.2f}".format(code, len(matrix),
+            yield "{:5d} {:4d} {:10.2f} < {:10.2f} < {:10.2f} {:3.0f} {:3.0f} {:3.0f} {:10.2f}".format(code, len(matrix),
                                                                                  matrix.TotalCost.mean() - matrix.TotalCost.std()*1.96, matrix.TotalCost.mean(),
                                                                                  matrix.TotalCost.mean() + matrix.TotalCost.std()*1.96, matrix.ES_Ranking.median(),
                                                                                  matrix.MS_Ranking.median(), matrix.HS_Ranking.median(), total_edu_cost)
@@ -74,7 +74,8 @@ def output_app(Matrix, age_lst, SqFtLiving, Bedrooms):
 
 def load_data(SqFtLiving, Bedrooms, age_lst):
     Matrix = pd.read_pickle('Predicted_Matrix.p')
-    output_app(Matrix, age_lst, SqFtLiving, Bedrooms)
+    for row in output_app(Matrix, age_lst, SqFtLiving, Bedrooms):
+        print row
 
 def main():
     SqFtLiving = raw_input('Please enter the average SqFT you are looking for:')
