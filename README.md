@@ -7,3 +7,7 @@ and Residential_Building.zip and Real_Property_Sales.zip files, respectively int
 Later, run the Feature_Engineering_Functions.py, Parcel_w_ES_MS_HS_Districts.py, School_Ratings.py , and SalePrice_Modelling.py python files in the given order from main directory (not src directory).
 
 When you run the Output.py python file in your terminal, you will see the predicted housing prices in each Zipcode with the Public School Ratings.
+
+![Seattle_RE_Last10Years](./Seattle_RE_Last10Years.png)
+
+![Seattle_Real_Estate_Historical_Data](./Seattle_Real_Estate_Historical_Data.png)
