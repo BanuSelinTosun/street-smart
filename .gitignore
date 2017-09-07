@@ -3,6 +3,8 @@ data/EXTR_ResBldg.csv
 
 *.pyc
 *.ipynb_checkpoints
+*.ipynb
+
 DS_Store
 
 .~lock.*

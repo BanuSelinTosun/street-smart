@@ -44,9 +44,9 @@ def total_kids_edu(age_lst):
     for age in age_lst:
         total_cost_per_kid = Private_Schooling(age)
         total.append(total_cost_per_kid)
-    return sum(total) 
+    return sum(total)    
 
-def subsetting(Matrix, SqFtLiving=700, Bedrooms=1, age_lst):
+def subsetting(Matrix, age_lst, SqFtLiving=700, Bedrooms=1):
     Matrix_subset = Matrix[(Matrix.SqFtTotLiving > (SqFtLiving*0.90)) & (Matrix.SqFtTotLiving < (SqFtLiving*1.1)) & (Matrix.Bedrooms <= (Bedrooms+1)) & (Matrix.Bedrooms >= (Bedrooms-1))]
     Matrix_98102 = Matrix_subset[Matrix_subset[98102]==1]
     Matrix_98103 = Matrix_subset[Matrix_subset[98103]==1]
@@ -76,17 +76,18 @@ def subsetting(Matrix, SqFtLiving=700, Bedrooms=1, age_lst):
                Matrix_98118, Matrix_98119, Matrix_98122, Matrix_98125, Matrix_98126, Matrix_98133, Matrix_98136, Matrix_98144, Matrix_98146, Matrix_98177, Matrix_98178, Matrix_98199]
     Seattle_Zipcodes = [98102, 98103, 98104, 98105, 98106, 98107, 98108, 98109, 98112, 98115, 98116, 98117, 98118, 98119, 98122, 98125, 98126, 98133, 98136, 
                     98144, 98146, 98177, 98178, 98199]
+    total_edu_cost = total_kids_edu(age_lst)
     for code, matrix in zip(Seattle_Zipcodes, zipcode_lst):
         if len(matrix)!=0:
             print "{:5d} {:4d} {:10.2f} < {:10.2f} < {:10.2f} {:3.0f} {:3.0f} {:3.0f} {:10.2f}".format(code, len(matrix), 
-                                                                                     matrix.TotalCost.mean() - matrix.TotalCost.std()*1.96, matrix.TotalCost.mean(), 
-                                                                                     matrix.TotalCost.mean() + matrix.TotalCost.std()*1.96, matrix.ES_Ranking.median(), 
-                                                                                     matrix.MS_Ranking.median(), matrix.HS_Ranking.median(), total_kids_edu(age_lst))
+                                                                                 matrix.TotalCost.mean() - matrix.TotalCost.std()*1.96, matrix.TotalCost.mean(), 
+                                                                                 matrix.TotalCost.mean() + matrix.TotalCost.std()*1.96, matrix.ES_Ranking.median(), 
+                                                                                 matrix.MS_Ranking.median(), matrix.HS_Ranking.median(), total_edu_cost)
 
 
 def load_data(SqFtLiving, Bedrooms, age_lst):
-    Matrix = pd.read_pickle('./src/Predicted_Matrix.p')
-    Output = subsetting(Matrix, SqFtLiving, Bedrooms)
+    Matrix = pd.read_pickle('Predicted_Matrix.p')
+    Output = subsetting(Matrix, age_lst, SqFtLiving, Bedrooms)
     return Output
 
 def main(SqFtLiving, Bedrooms, age_lst):
@@ -95,5 +96,6 @@ def main(SqFtLiving, Bedrooms, age_lst):
 if __name__=="__main__":
     SqFtLiving = raw_input('Please enter the average SqFT you are looking for:')
     Bedrooms = raw_input('Please enter the number of Bedrooms you are looking for:')
-    age_lst = raw_input('Please enter the age of each kid in the household:')
-    main(float(SqFtLiving), float(Bedrooms))
+    ages = raw_input('Please enter the age of each kid in the household, (in format e.g. 1 2 3):')
+    age_lst = [int(x) for x in ages.split()]
+    main(float(SqFtLiving), float(Bedrooms), age_lst)
