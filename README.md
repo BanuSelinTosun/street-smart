@@ -1,5 +1,5 @@
-# Neighborhood_Recommender
-A Neighborhood Recommender for King County
+# Maximize Your Happiness within Your Budget : MUHWUB
+A Zipcode Recommender in city of Seattle for optimized Real-Estate and Schoolings
 
 Please download the EXTR_ResBldg.csv and EXTR_RPSale.csv from http://info.kingcounty.gov/assessor/DataDownload/default.aspx
 and Residential_Building.zip and Real_Property_Sales.zip files, respectively into the data folder.
