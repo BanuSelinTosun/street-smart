@@ -71,6 +71,30 @@ def output_app(Matrix, age_lst, SqFtLiving, Bedrooms):
                                                                                  matrix.TotalCost.mean() + matrix.TotalCost.std()*1.96, matrix.ES_Ranking.median(),
                                                                                  matrix.MS_Ranking.median(), matrix.HS_Ranking.median(), total_edu_cost)
 
+def output_html(Matrix, age_lst, SqFtLiving, Bedrooms):
+    Zipcode_Matrix = subsetting(Matrix, SqFtLiving, Bedrooms)
+    total_edu_cost = total_kids_edu(age_lst)
+    yield "<table border>"
+    yield """<tr>
+               <td>{:5s}</td><td>{:4s}</td><td>{:10s}</td><td>{:10s}</td><td>{:10s}</td><td>{:3s}</td><td>{:3s}</td><td>{:3s}</td><td>{:10s}</td>
+             </tr>
+          """.format('Zip', 'Num', 'Min Cost', 'Ave Cost','Max Cost', 'ES', 'MS', 'HS', 'PrEdu Cst')
+    for code, matrix in Zipcode_Matrix.items():
+        if len(matrix)!=0:
+            yield """<tr>
+                       <td>{:5d}</td><td>{:4d}</td><td>{:10.2f}</td><td>{:10.2f}</td><td>{:10.2f}</td><td>{:3.0f}</td><td>{:3.0f}</td><td>{:3.0f}</td><td>{:10.2f}</td>
+                     </tr>
+                  """.format(
+                     code,
+                     len(matrix),
+                     matrix.TotalCost.mean() - matrix.TotalCost.std()*1.96,
+                     matrix.TotalCost.mean(),
+                     matrix.TotalCost.mean() + matrix.TotalCost.std()*1.96,
+                     matrix.ES_Ranking.median(),
+                     matrix.MS_Ranking.median(),
+                     matrix.HS_Ranking.median(),
+                     total_edu_cost)
+    yield "</table>"
 
 def load_data(SqFtLiving, Bedrooms, age_lst):
     Matrix = pd.read_pickle('Predicted_Matrix.p')

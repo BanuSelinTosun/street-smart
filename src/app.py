@@ -40,8 +40,9 @@ def word_counter():
     SqFtLiving = str(request.form['SqFtLiving'])
     Bedrooms = str(request.form['Bedrooms'])
     #Zipcode_Matrix = Output.subsetting(Matrix, float(SqFtLiving), float(Bedrooms))
-    output_table = Output.output_app(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
-    return '<PRE>'+'\n'.join(list(output_table))+'</PRE>' #str(Zipcode_Matrix)
+    output_table = Output.output_html(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
+    #return '<PRE>'+'\n'.join(list(output_table))+'</PRE>' #str(Zipcode_Matrix)
+    return '\n'.join(list(output_table))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
