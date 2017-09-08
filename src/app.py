@@ -39,15 +39,13 @@ def list_zipcodes():
     age_lst = [int(x) for x in ages.split()]
     SqFtLiving = str(request.form['SqFtLiving'])
     Bedrooms = str(request.form['Bedrooms'])
-    #Zipcode_Matrix = Output.subsetting(Matrix, float(SqFtLiving), float(Bedrooms))
     output_table = Output.output_html(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
-    #return '<PRE>'+'\n'.join(list(output_table))+'</PRE>' #str(Zipcode_Matrix)
     table = '\n'.join(list(output_table))
     head = """
     <!DOCTYPE html>
     <html>
     <head>
-    <script src="static/sorttable.js"></script> 
+    <script src="static/sorttable.js"></script>
     <style type="text/css">
     table, td, th {border: 1px solid black; border-collapse: collapse}
     td {font-family: Arial; padding: 5px; padding-left: 20px}
