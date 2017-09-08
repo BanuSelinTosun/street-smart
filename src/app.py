@@ -34,7 +34,7 @@ def submission_page():
 
 # My Zipcode Recommender app
 @app.route('/Zipcode_Recommender', methods=['POST'])
-def word_counter():
+def list_zipcodes():
     ages = str(request.form['ages'])
     age_lst = [int(x) for x in ages.split()]
     SqFtLiving = str(request.form['SqFtLiving'])
@@ -42,7 +42,20 @@ def word_counter():
     #Zipcode_Matrix = Output.subsetting(Matrix, float(SqFtLiving), float(Bedrooms))
     output_table = Output.output_html(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
     #return '<PRE>'+'\n'.join(list(output_table))+'</PRE>' #str(Zipcode_Matrix)
-    return '\n'.join(list(output_table))
+    table = '\n'.join(list(output_table))
+    head = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <script src="static/sorttable.js"></script> 
+    <style type="text/css">
+    table, td, th {border: 1px solid black; border-collapse: collapse}
+    td {font-family: Arial; padding: 5px; padding-left: 20px}
+    td.num {text-align:right}
+    </style>
+    </head>
+    """
+    return head + '<body>' + table + '</body>' + '</html>'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)

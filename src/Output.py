@@ -3,10 +3,12 @@ import numpy as np
 from collections import OrderedDict
 
 def Private_Schooling(age):
-    """This function calculates the total Private School Cost per kid until College
+    """This function calculates the total Private School Cost per kid until
+        College
         input: age of the kid, integer
         output: total cost until collage
-        Note: This calculation excludes bussing which is ~1100 $/year as of September 2017 in the city of Seattle"""
+        Note: This calculation excludes bussing which is ~1100 $/year as of
+        September 2017 in the city of Seattle"""
     Ave_Ann_Tuition_increase = 0.06
     Prv_ES_MS_Tuiton = 13801
     Prv_HS_Tuiton = 14473
@@ -74,26 +76,26 @@ def output_app(Matrix, age_lst, SqFtLiving, Bedrooms):
 def output_html(Matrix, age_lst, SqFtLiving, Bedrooms):
     Zipcode_Matrix = subsetting(Matrix, SqFtLiving, Bedrooms)
     total_edu_cost = total_kids_edu(age_lst)
-    yield "<table border>"
+    yield """<table class="sortable">"""
     yield """<tr>
-               <td>{:5s}</td><td>{:4s}</td><td>{:10s}</td><td>{:10s}</td><td>{:10s}</td><td>{:3s}</td><td>{:3s}</td><td>{:3s}</td><td>{:10s}</td>
+               <th>{:5s}</th><th>{:5s}</th><th>{:10s}</th><th>{:10s}</th><th>{:10s}</th><th>{:3s}</th><th>{:3s}</th><th>{:3s}</th><th>{:10s}</th>
              </tr>
-          """.format('Zip', 'Num', 'Min Cost', 'Ave Cost','Max Cost', 'ES', 'MS', 'HS', 'PrEdu Cst')
+          """.format('Zipcode', 'Num', 'Min Est', 'Ave Est','Max Est', 'ES', 'MS', 'HS', 'PrEdu Cst')
     for code, matrix in Zipcode_Matrix.items():
         if len(matrix)!=0:
             yield """<tr>
-                       <td>{:5d}</td><td>{:4d}</td><td>{:10.2f}</td><td>{:10.2f}</td><td>{:10.2f}</td><td>{:3.0f}</td><td>{:3.0f}</td><td>{:3.0f}</td><td>{:10.2f}</td>
+                       <td>{:5d}</td><td class="num">{:5d}</td><td class="num">{:10.0f}</td><td class="num">{:10.0f}</td><td class="num">{:10.0f}</td><td class="num">{:3.0f}</td><td class="num">{:3.0f}</td><td class="num">{:3.0f}</td><td class="num">{:10.0f}</td>
                      </tr>
                   """.format(
                      code,
                      len(matrix),
-                     matrix.TotalCost.mean() - matrix.TotalCost.std()*1.96,
-                     matrix.TotalCost.mean(),
-                     matrix.TotalCost.mean() + matrix.TotalCost.std()*1.96,
+                     round(matrix.TotalCost.mean() - matrix.TotalCost.std()*1.96),
+                     round(matrix.TotalCost.mean()),
+                     round(matrix.TotalCost.mean() + matrix.TotalCost.std()*1.96),
                      matrix.ES_Ranking.median(),
                      matrix.MS_Ranking.median(),
                      matrix.HS_Ranking.median(),
-                     total_edu_cost)
+                     round(total_edu_cost))
     yield "</table>"
 
 def load_data(SqFtLiving, Bedrooms, age_lst):
