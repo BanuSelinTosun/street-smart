@@ -4,14 +4,17 @@ import pandas as pd
 app = Flask(__name__)
 Matrix = pd.read_pickle('Predicted_Matrix.p')
 
-def dict_to_html(d):
-    return '<br>'.join('{0}: {1}'.format(k, d[k]) for k in sorted(d))
-
-
 # Form page to submit text
 @app.route('/')
 def submission_page():
     return '''
+        <h1>Maximize Life Within Budget</h1>
+        <style type="text/css">
+        h1 {font-family: Arial; color: white; text-shadow: 1px 1px #ff0000;}
+        tr {font-family: Arial; color: white; font-weight: bold}
+        body {background-image: url("static/Seattle_SeaFront.jpg");}
+        </style>
+        <body>
         <form action="/Zipcode_Recommender" method='POST' >
         <table>
         <tr>
@@ -29,8 +32,8 @@ def submission_page():
         </table>
             <input type="submit" />
         </form>
+        </body>
         '''
-
 
 # My Zipcode Recommender app
 @app.route('/Zipcode_Recommender', methods=['POST'])
@@ -47,11 +50,17 @@ def list_zipcodes():
     <head>
     <script src="static/sorttable.js"></script>
     <style type="text/css">
-    table, td, th {border: 1px solid black; border-collapse: collapse}
-    td {font-family: Arial; padding: 5px; padding-left: 20px}
+    table, td, th {border: 1px solid black; border-collapse: collapse; background: rgba(25,25,25,0.3)}
+    th {font-family: Arial; padding: 5px; padding-left: 20px; color: white;}
+    td {font-family: Arial; padding: 5px; padding-left: 20px; color: white}
     td.num {text-align:right}
+    body {background-image: url("static/Seattle_SeaFront.jpg");}
     </style>
     </head>
+    <h2>You can click on the column names to sort the table.</h2>
+    <style type="text/css">
+    h2 {font-family: Arial; color: white; text-shadow: 1px 1px #ff0000;}
+    </style>
     """
     return head + '<body>' + table + '</body>' + '</html>'
 
