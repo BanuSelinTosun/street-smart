@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from collections import OrderedDict
+import matplotlib.pyplot as plt
 
 def Private_Schooling(age):
     """This function calculates the total Private School Cost per kid until
@@ -62,6 +63,50 @@ def subsetting(Matrix, SqFtLiving=700, Bedrooms=1):
         Zipcode_Matrix[zipcode]=Matrix_subset[Matrix_subset[zipcode]==1]
     return Zipcode_Matrix
 
+def outlist(Matrix, age_lst, SqFtLiving, Bedrooms):
+    Zipcode_Matrix = subsetting(Matrix, SqFtLiving, Bedrooms)
+    total_edu_cost = total_kids_edu(age_lst)
+    Est_mean = []
+    Est_min = []
+    Est_max = []
+    zipcodes_str = []
+    num_RE = []
+    ES_Rate = []
+    MS_Rate = []
+    HS_Rate = []
+    for code, matrix in Zipcode_Matrix.items():
+        if len(matrix)!=0:
+            zipcodes_str.append(str(code))
+            num_RE.append(len(matrix))
+            Est_min.append(matrix.TotalCost.mean() - matrix.TotalCost.std()*1.96)
+            Est_mean.append(matrix.TotalCost.mean())
+            Est_max.append(matrix.TotalCost.mean() + matrix.TotalCost.std()*1.96)
+            ES_Rate.append(matrix.ES_Ranking.median())
+            MS_Rate.append(matrix.MS_Ranking.median())
+            HS_Rate.append(matrix.HS_Ranking.median())
+    return Est_mean, Est_min, Est_max, zipcodes_str, num_RE, ES_Rate, MS_Rate, HS_Rate
+
+def outplot(Matrix, age_lst, SqFtLiving, Bedrooms):
+    Est_mean, Est_min, Est_max, zipcodes_str, num_RE, ES_Rate, MS_Rate, HS_Rate = outlist(Matrix, age_lst, SqFtLiving, Bedrooms)
+    f, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(len(zipcodes), len(zipcodes)/4))
+    ax1.plot(Est_mean, 'k^-', label='Mean')
+    ax1.plot(Est_min, '--r', label='Min')
+    ax1.plot(Est_max, '--r', label='Max')
+    ax1.grid(color='grey', linestyle='--', linewidth=1)
+    ax1.set_ylim(min(Est_min)-50000, max(Est_max)+50000)
+    ax1.set_ylabel('Estimated $ amount')
+    ax1.legend()
+    ax2.plot(ES_Rate, '-.g*', label='Elementary School')
+    ax2.plot(MS_Rate, '--b*', label='Middle School')
+    ax2.plot(HS_Rate, ':k*', label='High School')
+    ax2.legend()
+    ax2.grid(color='grey', linestyle='--', linewidth=1)
+    ax2.set_ylim(0, 11)
+    ax2.set_ylabel('School Ratings')
+    ax2.set_xlabel('Zipcodes')
+    plt.xticks(range(len(zipcodes_str)), zipcodes_str)
+    plt.tight_layout()
+
 def output_app(Matrix, age_lst, SqFtLiving, Bedrooms):
     Zipcode_Matrix = subsetting(Matrix, SqFtLiving, Bedrooms)
     total_edu_cost = total_kids_edu(age_lst)
@@ -80,11 +125,11 @@ def output_html(Matrix, age_lst, SqFtLiving, Bedrooms):
     yield """<tr>
                <th>{:5s}</th><th>{:5s}</th><th>{:10s}</th><th>{:10s}</th><th>{:10s}</th><th>{:3s}</th><th>{:3s}</th><th>{:3s}</th><th>{:10s}</th>
              </tr>
-          """.format('Zipcode', 'Num', 'Min Est', 'Ave Est','Max Est', 'ES', 'MS', 'HS', 'PrEdu Cst')
+          """.format('Zipcode', 'Num', 'Min Est', 'Ave Est','Max Est', 'ES', 'MS', 'HS', 'PrvEd Cst')
     for code, matrix in Zipcode_Matrix.items():
         if len(matrix)!=0:
             yield """<tr>
-                       <td>{:5d}</td><td class="num">{:5d}</td><td class="num">{:10.0f}</td><td class="num">{:10.0f}</td><td class="num">{:10.0f}</td><td class="num">{:3.0f}</td><td class="num">{:3.0f}</td><td class="num">{:3.0f}</td><td class="num">{:10.0f}</td>
+                       <td>{:5d}</td><td class="num">{:5d}</td><td class="num">{:10.0f} $</td><td class="num">{:10.0f} $</td><td class="num">{:10.0f} $</td><td class="num">{:3.0f}</td><td class="num">{:3.0f}</td><td class="num">{:3.0f}</td><td class="num">{:10.0f} $</td>
                      </tr>
                   """.format(
                      code,
