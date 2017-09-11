@@ -1,4 +1,6 @@
 from flask import Flask, request
+import matplotlib.pyplot as plt
+from StringIO import StringIO
 import Output
 import pandas as pd
 app = Flask(__name__)
@@ -62,7 +64,9 @@ def list_zipcodes():
     SqFtLiving = str(request.form['SqFtLiving'])
     Bedrooms = str(request.form['Bedrooms'])
     output_table = Output.output_html(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
-    #output_plot = Output.outplot(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
+    #Output.outplot(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
+    image = StringIO()
+    plt.savefig(image)
     table = '\n'.join(list(output_table))
     head = """
     <!DOCTYPE html>

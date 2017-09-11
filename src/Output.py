@@ -88,7 +88,7 @@ def outlist(Matrix, age_lst, SqFtLiving, Bedrooms):
 
 def outplot(Matrix, age_lst, SqFtLiving, Bedrooms):
     Est_mean, Est_min, Est_max, zipcodes_str, num_RE, ES_Rate, MS_Rate, HS_Rate = outlist(Matrix, age_lst, SqFtLiving, Bedrooms)
-    f, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(len(zipcodes), len(zipcodes)/4))
+    f, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(len(zipcodes_str), len(zipcodes_str)/4))
     ax1.plot(Est_mean, 'k^-', label='Mean')
     ax1.plot(Est_min, '--r', label='Min')
     ax1.plot(Est_max, '--r', label='Max')
@@ -106,6 +106,7 @@ def outplot(Matrix, age_lst, SqFtLiving, Bedrooms):
     ax2.set_xlabel('Zipcodes')
     plt.xticks(range(len(zipcodes_str)), zipcodes_str)
     plt.tight_layout()
+    plt.show()
 
 def output_app(Matrix, age_lst, SqFtLiving, Bedrooms):
     Zipcode_Matrix = subsetting(Matrix, SqFtLiving, Bedrooms)
@@ -145,6 +146,7 @@ def output_html(Matrix, age_lst, SqFtLiving, Bedrooms):
 
 def load_data(SqFtLiving, Bedrooms, age_lst):
     Matrix = pd.read_pickle('Predicted_Matrix.p')
+    outplot(Matrix, age_lst, SqFtLiving, Bedrooms)
     for row in output_app(Matrix, age_lst, SqFtLiving, Bedrooms):
         print row
 
