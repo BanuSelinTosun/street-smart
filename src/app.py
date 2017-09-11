@@ -1,6 +1,7 @@
 from flask import Flask, request
 import matplotlib.pyplot as plt
 from StringIO import StringIO
+import base64
 import Output
 import pandas as pd
 app = Flask(__name__)
@@ -64,9 +65,10 @@ def list_zipcodes():
     SqFtLiving = str(request.form['SqFtLiving'])
     Bedrooms = str(request.form['Bedrooms'])
     output_table = Output.output_html(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
-    #Output.outplot(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
-    image = StringIO()
-    plt.savefig(image)
+    fig = Output.outplot(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
+    image_file = StringIO()
+    fig.savefig(image_file)
+    image_file.seek(0)
     table = '\n'.join(list(output_table))
     head = """
     <!DOCTYPE html>
@@ -79,6 +81,7 @@ def list_zipcodes():
     td {font-family: Arial; padding: 5px; padding-left: 20px; color: white;}
     td.num {text-align:right}
     body {background-image: url("static/Seattle_SeaFront.jpg");}
+    img {opacity: 0.5; filter: alpha(opacity=50); width:1000px; height: auto;}
     </style>
     </head>
     <h2>You can click on the column names to sort the table.</h2>
@@ -86,7 +89,20 @@ def list_zipcodes():
     h2 {font-family: Arial; color: white; color: white; text-shadow: 2px 2px 4px #000000;}
     </style>
     """
-    return head + '<body>' + table + '</body>' + '</html>'
+    image = '<img  src="data:image/png;base64,' + base64.b64encode(image_file.read()) + '"/>'
+    return head + '<body>' + table + image + '</body>' + '</html>'
+
+
+
+@app.route('/plot.png')
+def get_graph():
+    plt.figure()
+    n = 10
+    plt.plot(range(n), [random() for i in xrange(n)])
+    image = StringIO()
+    plt.savefig(image)
+    return image.getvalue(), 200, {'Content-Type': 'image/png'}
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)

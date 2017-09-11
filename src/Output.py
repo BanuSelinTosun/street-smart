@@ -78,23 +78,23 @@ def outlist(Matrix, age_lst, SqFtLiving, Bedrooms):
         if len(matrix)!=0:
             zipcodes_str.append(str(code))
             num_RE.append(len(matrix))
-            Est_min.append(matrix.TotalCost.mean() - matrix.TotalCost.std()*1.96)
-            Est_mean.append(matrix.TotalCost.mean())
-            Est_max.append(matrix.TotalCost.mean() + matrix.TotalCost.std()*1.96)
-            ES_Rate.append(matrix.ES_Ranking.median())
-            MS_Rate.append(matrix.MS_Ranking.median())
-            HS_Rate.append(matrix.HS_Ranking.median())
+            Est_min.append((matrix.TotalCost.mean() - matrix.TotalCost.std()*1.96)/10**5)
+            Est_mean.append((matrix.TotalCost.mean())/10**5)
+            Est_max.append((matrix.TotalCost.mean() + matrix.TotalCost.std()*1.96)/10**5)
+            ES_Rate.append(round(matrix.ES_Ranking.median()))
+            MS_Rate.append(round(matrix.MS_Ranking.median()))
+            HS_Rate.append(round(matrix.HS_Ranking.median()))
     return Est_mean, Est_min, Est_max, zipcodes_str, num_RE, ES_Rate, MS_Rate, HS_Rate
 
 def outplot(Matrix, age_lst, SqFtLiving, Bedrooms):
     Est_mean, Est_min, Est_max, zipcodes_str, num_RE, ES_Rate, MS_Rate, HS_Rate = outlist(Matrix, age_lst, SqFtLiving, Bedrooms)
-    f, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(len(zipcodes_str), len(zipcodes_str)/4))
+    f, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(18, 18/4))
     ax1.plot(Est_mean, 'k^-', label='Mean')
     ax1.plot(Est_min, '--r', label='Min')
     ax1.plot(Est_max, '--r', label='Max')
     ax1.grid(color='grey', linestyle='--', linewidth=1)
-    ax1.set_ylim(min(Est_min)-50000, max(Est_max)+50000)
-    ax1.set_ylabel('Estimated $ amount')
+    ax1.set_ylim(min(Est_min)-0.5, max(Est_max)+0.5)
+    ax1.set_ylabel('Estimated $ X 100K')
     ax1.legend()
     ax2.plot(ES_Rate, '-.g*', label='Elementary School')
     ax2.plot(MS_Rate, '--b*', label='Middle School')
@@ -106,7 +106,8 @@ def outplot(Matrix, age_lst, SqFtLiving, Bedrooms):
     ax2.set_xlabel('Zipcodes')
     plt.xticks(range(len(zipcodes_str)), zipcodes_str)
     plt.tight_layout()
-    plt.show()
+    #plt.show()
+    return f
 
 def output_app(Matrix, age_lst, SqFtLiving, Bedrooms):
     Zipcode_Matrix = subsetting(Matrix, SqFtLiving, Bedrooms)
