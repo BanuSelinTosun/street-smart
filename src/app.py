@@ -96,7 +96,7 @@ def list_zipcodes():
     """
     image = '<img  src="data:image/png;base64,' + base64.b64encode(image_file.read()) + '"/>'
     gmap = """
-    <iframe id="map" style="width:542px; height:640px"
+    <iframe id="map" style="width:542px; height:668px"
     src="//www.google.com/maps/embed/v1/place?q=Seattle,WA,USA&zoom=10&key={}">
     </iframe>
     """.format(google_api_key)
