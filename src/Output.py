@@ -149,13 +149,13 @@ def output_html(Matrix, age_lst, SqFtLiving, Bedrooms):
                <th>{:5s}</th><th>{:5s}</th><th>{:10s}</th><th>{:10s}</th><th>{:10s}</th><th>{:3s}</th><th>{:3s}</th><th>{:3s}</th><th>{:10s}</th>
              </tr>
           """.format('Zipcode', 'Num', 'Min Est', 'Ave Est','Max Est', 'ES', 'MS', 'HS', 'PrvEd Cst')
-    for code, matrix in Zipcode_Matrix.items():
+    for zcode, matrix in Zipcode_Matrix.items():
         if len(matrix)!=0:
-            yield """<tr>
+            yield """<tr id="z{:5d}" onclick="updateMap({:5d})">
                        <td>{:5d}</td><td class="num">{:5d}</td><td class="num">{:10.0f} $</td><td class="num">{:10.0f} $</td><td class="num">{:10.0f} $</td><td class="num">{:3.0f}</td><td class="num">{:3.0f}</td><td class="num">{:3.0f}</td><td class="num">{:10.0f} $</td>
                      </tr>
                   """.format(
-                     code,
+                     zcode,zcode,zcode,
                      len(matrix),
                      round(matrix.TotalCost.mean() - matrix.TotalCost.std()*1.96),
                      round(matrix.TotalCost.mean()),

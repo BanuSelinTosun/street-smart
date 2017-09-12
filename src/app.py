@@ -75,7 +75,9 @@ def list_zipcodes():
     <!DOCTYPE html>
     <html>
     <head>
+    <script src="static/jquery-3.2.1.min.js"></script>
     <script src="static/sorttable.js"></script>
+    <script src="static/app.js"></script>
     <style type="text/css">
     table, td, th {border: 1px solid black; border-collapse: collapse; background: rgba(25,25,25,0.6)}
     th {font-family: Arial; padding: 5px; padding-left: 20px; color: white;}
@@ -93,9 +95,8 @@ def list_zipcodes():
     """
     image = '<img  src="data:image/png;base64,' + base64.b64encode(image_file.read()) + '"/>'
     gmap = """
-    <iframe style="width:544px; height:544px" src="//www.google.com/maps/embed/v1/place?q=98104
-    &zoom=14
-    &key={}">
+    <iframe id="map" style="width:544px; height:640px"
+    src="//www.google.com/maps/embed/v1/place?q=Seattle,WA,USA&zoom=11&key={}">
     </iframe>
     """.format(google_api_key)
     return (head + '<body>' + image + table + gmap + '</body>' + '</html>')
