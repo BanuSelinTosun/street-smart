@@ -86,17 +86,18 @@ def list_zipcodes():
     body {background-image: url("static/Seattle_SeaFront.jpg");
     background-size:cover;}
     img {width:1250px; height: auto;}
-    iframe {position:absolute; top:349px; left:710px; right:0; bottom:0; height:100%;
+    iframe {position:absolute; top:396px; left:710px; right:0; bottom:0; height:100%;
     width:100%;}
     h2 {font-family: Arial; color: white; color: white; text-shadow: 2px 2px 4px #000000;}
     </style>
     </head>
-    <h2>You can click on the column names to sort the table.</h2>
+    <h2>Click on the column names to sort the table.</h2>
+    <h2>Click on the rows to show the zipcode in GoogleMaps.</h2>
     """
     image = '<img  src="data:image/png;base64,' + base64.b64encode(image_file.read()) + '"/>'
     gmap = """
     <iframe id="map" style="width:544px; height:640px"
-    src="//www.google.com/maps/embed/v1/place?q=Seattle,WA,USA&zoom=11&key={}">
+    src="//www.google.com/maps/embed/v1/place?q=Seattle,WA,USA&zoom=10&key={}">
     </iframe>
     """.format(google_api_key)
     return (head + '<body>' + image + table + gmap + '</body>' + '</html>')
