@@ -31,7 +31,7 @@ def submission_page():
         p {font-family: Arial; font-weight: bold; color: white;
         text-shadow: 2px 2px 4px #000000;}
         tr {font-family: Arial; color: white; font-weight: bold}
-        body {background-image: url("static/Seattle_SeaFront.jpg");
+        body {background-image: url("static/Seattle_SeaFront.jpg"); background-size:cover}
         text-shadow: 2px 2px 4px #000000;}
         </style>
         <body>
@@ -80,8 +80,8 @@ def list_zipcodes():
     th {font-family: Arial; padding: 5px; padding-left: 20px; color: white;}
     td {font-family: Arial; padding: 5px; padding-left: 20px; color: white;}
     td.num {text-align:right}
-    body {background-image: url("static/Seattle_SeaFront.jpg");}
-    img {width:1020px; height: auto;}
+    body {background-image: url("static/Seattle_SeaFront.jpg"); background-size:cover}
+    img {width:1620px; height: auto;}
     </style>
     </head>
     <h2>You can click on the column names to sort the table.</h2>
@@ -90,7 +90,7 @@ def list_zipcodes():
     </style>
     """
     image = '<img  src="data:image/png;base64,' + base64.b64encode(image_file.read()) + '"/>'
-    return head + '<body>' + table + image + '</body>' + '</html>'
+    return head + '<body>' + image + table + '</body>' + '</html>'
 
 
 
