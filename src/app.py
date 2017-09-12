@@ -6,6 +6,8 @@ import Output
 import pandas as pd
 app = Flask(__name__)
 Matrix = pd.read_pickle('Predicted_Matrix.p')
+with open ('../google_api_key') as f:
+    google_api_key = f.read()
 
 # Form page to submit text
 @app.route('/')
@@ -68,7 +70,7 @@ def list_zipcodes():
     image_file = StringIO()
     fig.savefig(image_file, facecolor=fig.get_facecolor(), edgecolor='none')
     image_file.seek(0)
-    table = '\n'.join(list(output_table))
+    table = '<table>' + '\n'.join(list(output_table)) + '</table>'
     head = """
     <!DOCTYPE html>
     <html>
@@ -81,15 +83,19 @@ def list_zipcodes():
     td.num {text-align:right}
     body {background-image: url("static/Seattle_SeaFront.jpg"); background-size:cover}
     img {width:1620px; height: auto;}
+    h2 {font-family: Arial; color: white; color: white; text-shadow: 2px 2px 4px #000000;}
     </style>
     </head>
     <h2>You can click on the column names to sort the table.</h2>
-    <style type="text/css">
-    h2 {font-family: Arial; color: white; color: white; text-shadow: 2px 2px 4px #000000;}
-    </style>
     """
     image = '<img  src="data:image/png;base64,' + base64.b64encode(image_file.read()) + '"/>'
-    return head + '<body>' + image + table + '</body>' + '</html>'
+    gmap = """
+    <iframe style="width:540px; height:540px" src="//www.google.com/maps/embed/v1/place?q=98104
+    &zoom=14
+    &key={}">
+    </iframe>
+    """.format(google_api_key)
+    return (head + '<body>' + image + table + gmap + '</body>' + '</html>')
 
 
 
