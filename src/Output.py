@@ -88,7 +88,7 @@ def outlist(Matrix, age_lst, SqFtLiving, Bedrooms):
 
 def outplot(Matrix, age_lst, SqFtLiving, Bedrooms):
     Est_mean, Est_min, Est_max, zipcodes_str, num_RE, ES_Rate, MS_Rate, HS_Rate = outlist(Matrix, age_lst, SqFtLiving, Bedrooms)
-    f, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(18, 18/4), facecolor=(0,0,0,0.4))
+    f, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(18, 18/4), facecolor=(0,0,0,0.65))
     legend_properties = {'weight':'bold'}
     ax1.plot(Est_mean, 'rd', label='Mean $ Estimate', markersize=13, alpha=0.7)
     ax1.plot(Est_min, 'wd', label='Min $ Estimate', markersize=8, alpha=0.7)

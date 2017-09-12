@@ -77,12 +77,15 @@ def list_zipcodes():
     <head>
     <script src="static/sorttable.js"></script>
     <style type="text/css">
-    table, td, th {border: 1px solid black; border-collapse: collapse; background: rgba(25,25,25,0.3)}
+    table, td, th {border: 1px solid black; border-collapse: collapse; background: rgba(25,25,25,0.5)}
     th {font-family: Arial; padding: 5px; padding-left: 20px; color: white;}
     td {font-family: Arial; padding: 5px; padding-left: 20px; color: white;}
     td.num {text-align:right}
-    body {background-image: url("static/Seattle_SeaFront.jpg"); background-size:cover}
-    img {width:1620px; height: auto;}
+    body {background-image: url("static/Seattle_SeaFront.jpg");
+    background-size:cover;}
+    img {width:1250px; height: auto;}
+    iframe {position:absolute; top:349px; left:710px; right:0; bottom:0; height:100%;
+    width:100%;}
     h2 {font-family: Arial; color: white; color: white; text-shadow: 2px 2px 4px #000000;}
     </style>
     </head>
