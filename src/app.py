@@ -67,7 +67,7 @@ def list_zipcodes():
     output_table = Output.output_html(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
     fig = Output.outplot(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
     image_file = StringIO()
-    fig.savefig(image_file)
+    fig.savefig(image_file, facecolor=fig.get_facecolor(), edgecolor='none')
     image_file.seek(0)
     table = '\n'.join(list(output_table))
     head = """
@@ -81,7 +81,7 @@ def list_zipcodes():
     td {font-family: Arial; padding: 5px; padding-left: 20px; color: white;}
     td.num {text-align:right}
     body {background-image: url("static/Seattle_SeaFront.jpg");}
-    img {opacity: 0.5; filter: alpha(opacity=50); width:1000px; height: auto;}
+    img {width:1020px; height: auto;}
     </style>
     </head>
     <h2>You can click on the column names to sort the table.</h2>
