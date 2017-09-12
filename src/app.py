@@ -31,8 +31,7 @@ def submission_page():
         p {font-family: Arial; font-weight: bold; color: white;
         text-shadow: 2px 2px 4px #000000;}
         tr {font-family: Arial; color: white; font-weight: bold}
-        body {background-image: url("static/Seattle_SeaFront.jpg"); background-size:cover}
-        text-shadow: 2px 2px 4px #000000;}
+        body {background-image: url("static/Seattle_SeaFront.jpg"); background-size:cover; text-shadow: 2px 2px 4px #000000;}
         </style>
         <body>
         <form action="/Zipcode_Recommender" method='POST' >
