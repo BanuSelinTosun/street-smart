@@ -70,7 +70,7 @@ def list_zipcodes():
     image_file = StringIO()
     fig.savefig(image_file, facecolor=fig.get_facecolor(), edgecolor='none')
     image_file.seek(0)
-    table = '<table>' + '\n'.join(list(output_table)) + '</table>'
+    table = '\n'.join(list(output_table))
     head = """
     <!DOCTYPE html>
     <html>
@@ -89,6 +89,7 @@ def list_zipcodes():
     iframe {position:absolute; top:396px; left:712px; right:0; bottom:0; height:100%;
     width:100%;}
     h2 {font-family: Arial; color: white; color: white; text-shadow: 2px 2px 4px #000000;}
+    .highlight {background-color: red;}
     </style>
     </head>
     <h2>Click on the column names to sort the table.</h2>
@@ -101,17 +102,6 @@ def list_zipcodes():
     </iframe>
     """.format(google_api_key)
     return (head + '<body>' + image + table + gmap + '</body>' + '</html>')
-
-
-
-@app.route('/plot.png')
-def get_graph():
-    plt.figure()
-    n = 10
-    plt.plot(range(n), [random() for i in xrange(n)])
-    image = StringIO()
-    plt.savefig(image)
-    return image.getvalue(), 200, {'Content-Type': 'image/png'}
 
 
 if __name__ == '__main__':

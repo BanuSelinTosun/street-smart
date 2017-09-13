@@ -144,7 +144,7 @@ def output_app(Matrix, age_lst, SqFtLiving, Bedrooms):
 def output_html(Matrix, age_lst, SqFtLiving, Bedrooms):
     Zipcode_Matrix = subsetting(Matrix, SqFtLiving, Bedrooms)
     total_edu_cost = total_kids_edu(age_lst)
-    yield """<table class="sortable">"""
+    yield """<table id="zchart" class="sortable">"""
     yield """<tr>
                <th>{:5s}</th><th>{:5s}</th><th>{:10s}</th><th>{:10s}</th><th>{:10s}</th><th>{:3s}</th><th>{:3s}</th><th>{:3s}</th><th>{:10s}</th>
              </tr>
