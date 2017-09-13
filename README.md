@@ -12,4 +12,4 @@ When you run the app.py python file in your terminal, you will get the html for 
 
 ![Seattle_Real_Estate_Historical_Data](./img/Seattle_Real_Estate_Historical_Data.png)
 
-![skitlearn](./img/scikit-learn-logo.png), ![QGIS](./img/QGis_Logo.png), ![python](./img/python-logo-master-v3-TM.png), ![jupyter](./img/jupyter-sq-text.png), ![Jquery](./img/Jquery_Logo.png), ![GitHub](./img/github_logo.png)
+![tools](./img/Tools.PNG), 
