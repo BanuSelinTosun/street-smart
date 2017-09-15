@@ -152,7 +152,7 @@ def output_html(Matrix, age_lst, SqFtLiving, Bedrooms):
     for zcode, matrix in Zipcode_Matrix.items():
         if len(matrix)!=0:
             yield """<tr id="z{:5d}" onclick="updateMap({:5d})">
-                       <td>{:5d}</td><td class="num">{:5d}</td><td class="num">{:10.0f} $</td><td class="num">{:10.0f} $</td><td class="num">{:10.0f} $</td><td class="num">{:3.0f}</td><td class="num">{:3.0f}</td><td class="num">{:3.0f}</td><td class="num">{:10.0f} $</td>
+                       <td>{:5d}</td><td class="num">{:5d}</td><td class="num">$ {:,.0f}</td><td class="num">$ {:,.0f}</td><td class="num">$ {:,.0f}</td><td class="num">{:3.0f}</td><td class="num">{:3.0f}</td><td class="num">{:3.0f}</td><td class="num">$ {:,.0f}</td>
                      </tr>
                   """.format(
                      zcode,zcode,zcode,
