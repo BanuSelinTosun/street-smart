@@ -8,7 +8,7 @@ Later, run the Feature_Engineering_Functions.py, Parcel_w_ES_MS_HS_Districts.py,
 
 When you run the app.py python file in your terminal, you will get the html for the app which shows you the predicted housing prices for the given SqFt and number of Bedrooms in each Zipcode with the Public School Ratings, and a comparison of Private School Cost until Collage.
 
-![App_Video](./img/91520170946.gif)
+![App_Video](./img/91520170946.gif | width=100)
 
 ![Seattle_RE_Last10Years](./img/Seattle_RE_Last10Years.png)
 
