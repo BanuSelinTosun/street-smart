@@ -168,6 +168,7 @@ def output_html(Matrix, age_lst, SqFtLiving, Bedrooms):
 
 def load_data(SqFtLiving, Bedrooms, age_lst):
     Matrix = pd.read_pickle('Predicted_Matrix.p')
+    #Matrix = pd.read_pickle('GB_Pickled_Mtrx.p')
     outplot(Matrix, age_lst, SqFtLiving, Bedrooms)
     for row in output_app(Matrix, age_lst, SqFtLiving, Bedrooms):
         print row
