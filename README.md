@@ -2,6 +2,8 @@
 
 ## A Zipcode Recommender in city of Seattle for optimized Real-Estate and Schoolings
 
+![Seattle_RE_Last10Years](./img/Seattle_RE_Last10Years.png)
+
 Seattle Real-Estate Market is booming and will continue to grow.
 Living on rent is good, but buying a house is a better investment.
 What are criteria for this best investment? How can you decide on the best option for what your money's worth?
@@ -10,10 +12,6 @@ You may want to consider the schooling options as well.
 Here, with this app, you can find min/max housing estimates for each Zipcode and the public school ratings with respect to the assigned districts, and a comparison of the private schooling cost with respect to each kids age in the household. And, it is ok if you planning to have kids x many years down the road, the private schooling calculation captures it all...
 
 ![App_Video](./img/91520170946.gif)
-
-![Seattle_RE_Last10Years](./img/Seattle_RE_Last10Years.png)
-
-![Seattle_Real_Estate_Historical_Data](./img/Seattle_Real_Estate_Historical_Data.png)
 
 ## Data Collection:
 Main data sources are:
@@ -27,6 +25,8 @@ Classic Feature Engineering methods are applied.
     - Data is limited to 100,000.0$ and 2,000,000.0$ for the general purpose of the problem.
     - To consider only houses, the living number of units are filtered to 2.
     - For the accuracy of the model, the data prior to 1985 is discarded.
+
+![Seattle_Real_Estate_Historical_Data](./img/Seattle_Real_Estate_Historical_Data.png)
 
 ## Modelling:
 Various regressors methods, with GridSearch of respective hyper-parameters, are screened; which are Random Forest Regressor, Gradient Boosting Regressor, Elastic Net CV, Support Vector Regressor, and Linear Regression. Among these, the best error margin is achieved by Random Forest Regressor, with 12.27% median absolute percent error. The best GridSearch of Gradient Boosting Regressor provided 11.30% median absolute percent error. This is also included in the codes, and the jupyter notebooks. Zillow's current median absolute percent error is 5.4 % for Seattle city.
