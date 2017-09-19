@@ -1,4 +1,4 @@
-# Maximize Life Within Budget
+# Maximize Your Family's Real Estate Investment
 
 ## A Zipcode Recommender in city of Seattle for optimized Real-Estate and Schoolings
 
