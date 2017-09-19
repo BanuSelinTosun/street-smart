@@ -16,10 +16,10 @@ Here, with this app, you can find min/max housing estimates for each Zipcode and
 
 ## Data Collection:
 Main data sources are:
-    * King County
-    * Seattle Public Schools
-    * Great School_Ratings
-    * Zillow
+* King County
+* Seattle Public Schools
+* Great School_Ratings
+* Zillow
 
 ## Data Cleaning:
 Classic Feature Engineering methods are applied.
