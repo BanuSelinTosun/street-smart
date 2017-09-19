@@ -1,4 +1,6 @@
 from flask import Flask, request
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from StringIO import StringIO
 import base64
