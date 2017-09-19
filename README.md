@@ -3,7 +3,7 @@
 
 ### A Zipcode Recommender in city of Seattle for optimized Real-Estate and Schoolings
 
-![Seattle_RE_Last10Years](./img/Seattle_RE_Last10Years.png)
+<img alt="Seattle_RE_Last10Years" src="./img/Seattle_RE_Last10Years.png" height="350" width="700" />
 
 Seattle Real-Estate Market is booming and will continue to grow.
 Living on rent is good, but buying a house is a better investment.
@@ -12,7 +12,7 @@ You may want to consider the schooling options as well.
 
 Here, with this app, you can find min/max housing estimates for each Zipcode and the public school ratings with respect to the assigned districts, and a comparison of the private schooling cost with respect to each kids age in the household. And, it is ok if you planning to have kids x many years down the road, the private schooling calculation captures it all...
 
-![App_Video](./img/2017_09_18_212826.gif)
+<img alt="App_Video" src="./img/2017_09_18_212826.gif" height="500" width="1000" />
 
 ## Data Collection:
 Main data sources are:
@@ -25,15 +25,15 @@ QGIS is used for associating the parcel numbers to public school districts.
 
 Elementary School Zones
 
-![ES Zones](./img/ES_Districts.png)
+<img alt="ES Zones" src="./img/ES_Districts.png" height="300" width="200" />
 
 Middle School Zones
 
-![MS Zones](./img/MS_Districts.png)
+<img alt="MS Zones" src="./img/MS_Districts.png" height="300" width="200" />
 
 High School Zones
 
-![HS Zones](./img/HS_Districts.png)
+<img alt="HS Zones" src="./img/HS_Districts.png" height="300" width="200" />
 
 Sample parcel allocation to HS District: This example is using Ballard High School
 
@@ -50,7 +50,7 @@ Classic Feature Engineering methods are applied.
 ## Modelling:
 Various regressors methods, with GridSearch of respective hyper-parameters, are screened; which are Random Forest Regressor, Gradient Boosting Regressor, Elastic Net CV, Support Vector Regressor, and Linear Regression. Among these, the best error margin is achieved by Random Forest Regressor, with 12.27% median absolute percent error. The best GridSearch of Gradient Boosting Regressor provided 11.30% median absolute percent error. This is also included in the codes, and the jupyter notebooks. Zillow's current median absolute percent error is 5.4 % for Seattle city.
 
-![tools](./img/Tools.PNG),
+<img alt="Tools" src="./img/Tools.PNG" height="300" width="600" />
 
 ## How to make the app work:
 
