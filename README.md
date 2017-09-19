@@ -11,8 +11,6 @@ You may want to consider the schooling options as well.
 
 Here, with this app, you can find min/max housing estimates for each Zipcode and the public school ratings with respect to the assigned districts, and a comparison of the private schooling cost with respect to each kids age in the household. And, it is ok if you planning to have kids x many years down the road, the private schooling calculation captures it all...
 
-![App_Video](./img/91520170946.gif)
-![App_Video](./img/2017_09_18_091226.gif)
 ![App_Video](./img/2017_09_18_211126.gif)
 
 ## Data Collection:

@@ -14,7 +14,7 @@ with open ('../google_api_key') as f:
 @app.route('/')
 def submission_page():
     return '''
-        <h1>Maximize Life Within Budget</h1>
+        <h1>Maximize Your Family's Real Estate Investment</h1>
         <p> Seattle house prices are going up rapidly.
             Everyone is on a budget; how should you invest your money?
         </p>
