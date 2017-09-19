@@ -13,6 +13,7 @@ Here, with this app, you can find min/max housing estimates for each Zipcode and
 
 ![App_Video](./img/91520170946.gif)
 ![App_Video](./img/2017_09_18_091226.gif)
+![App_Video](./img/2017_09_18_211126.gif)
 
 ## Data Collection:
 Main data sources are:
