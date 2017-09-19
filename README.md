@@ -23,17 +23,9 @@ Main data sources are:
 
 QGIS is used for associating the parcel numbers to public school districts.
 
-Elementary School Zones
+Elementary, Middle, and High School Zones respectively
 
-<img alt="ES Zones" src="./img/ES_Districts.png" height="300" width="200" />
-
-Middle School Zones
-
-<img alt="MS Zones" src="./img/MS_Districts.png" height="300" width="200" />
-
-High School Zones
-
-<img alt="HS Zones" src="./img/HS_Districts.png" height="300" width="200" />
+<img alt="ES Zones" src="./img/ES_Districts.png" height="300" width="200" /> <img alt="MS Zones" src="./img/MS_Districts.png" height="300" width="200" /> <img alt="HS Zones" src="./img/HS_Districts.png" height="300" width="200" />
 
 Sample parcel allocation to HS District: This example is using Ballard High School
 
