@@ -1,7 +1,7 @@
 # STREET SMART
 # Maximize Your Family's Real Estate Investment
 
-### A Zipcode Recommender in city of Seattle for optimized Real-Estate and Schoolings
+### A Zipcode Recommender in city of Seattle for optimized Real-Estate and Schoolings: http://www.street-smart-realty.com/
 
 <img alt="Seattle_RE_Last10Years" src="./img/Seattle_RE_Last10Years.png" height="350" width="700" />
 
@@ -46,7 +46,7 @@ Various regressors methods, with GridSearch of respective hyper-parameters, are 
 
 ## How to make the app work:
 
-The app is going to be live soon, and the link will be posted here.
+The app is live here: http://www.street-smart-realty.com/.
 
 ### Please follow the directions below for having the app working in your local browser.
 
