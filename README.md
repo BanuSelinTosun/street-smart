@@ -23,9 +23,9 @@ Main data sources are:
 
 ## Data Cleaning:
 Classic Feature Engineering methods are applied.
-    * Data is limited to 100,000.0$ and 2,000,000.0$ for the general purpose of the problem.
-    * To consider only houses, the living number of units are filtered to 2.
-    * For the accuracy of the model, the data prior to 1985 is discarded.
+* Data is limited to 100,000.0$ and 2,000,000.0$ for the general purpose of the problem.
+* To consider only houses, the living number of units are filtered to 2.
+* For the accuracy of the model, the data prior to 1985 is discarded.
 
 ![Seattle_Real_Estate_Historical_Data](./img/Seattle_Real_Estate_Historical_Data.png)
 
