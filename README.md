@@ -20,7 +20,7 @@ Main data sources are:
 * Great School_Ratings
 * Zillow
 
-QGIS is used for associating the Seattle city parcel numbers to public school districts.
+QGIS is used for associating the parcel numbers to public school districts.
 
 Elementary School Zones
 
