@@ -1,4 +1,4 @@
-# Maximize Your Family's Real Estate Investment
+# STREET SMART: Maximize Your Family's Real Estate Investment
 
 ## A Zipcode Recommender in city of Seattle for optimized Real-Estate and Schoolings
 
