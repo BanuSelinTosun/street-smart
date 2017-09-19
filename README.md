@@ -19,18 +19,23 @@ Main data sources are:
 * Seattle Public Schools
 * Great School_Ratings
 * Zillow
+
 QGIS is used for associating the Seattle city parcel numbers to public school districts.
 
 Elementary School Zones
+
 ![ES Zones](./img/ES_Districts.png)
 
 Middle School Zones
+
 ![MS Zones](./img/MS_Districts.png)
 
 High School Zones
+
 ![HS Zones](./img/HS_Districts.png)
 
-Sample parcel allocation to HS District
+Sample parcel allocation to HS District: This example is using Ballard High School
+
 ![Ballard](./img/Example_Parcel_HS_District.png)
 
 ## Data Cleaning:
