@@ -24,7 +24,7 @@ QGIS is used for associating the parcel numbers to public school districts.
 
 Elementary School Zones
 
-![ES Zones](./img/ES_Districts.png)
+![ES Zones](./img/ES_Districts.png){:height="50%" width="50%"}
 
 Middle School Zones
 
