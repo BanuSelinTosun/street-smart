@@ -43,7 +43,7 @@ def submission_page():
         <form action="/Zipcode_Recommender" method='POST' >
         <table>
         <tr>
-          <td> The average SqFT you are looking for: </td>
+          <td> The approximate SqFT you are looking for: </td>
           <td> <input type="text" name="SqFtLiving" /> </td>
         </tr>
         <tr>
