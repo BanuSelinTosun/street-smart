@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from collections import OrderedDict
 import matplotlib.pyplot as plt
+import re
 
 def Private_Schooling(age):
     """This function calculates the total Private School Cost per kid until

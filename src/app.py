@@ -6,6 +6,7 @@ from StringIO import StringIO
 import base64
 import Output
 import pandas as pd
+import re
 app = Flask(__name__)
 Matrix = pd.read_pickle('Predicted_Matrix.p')
 #Matrix = pd.read_pickle('GB_Pickled_Mtrx.p')
@@ -65,9 +66,24 @@ def submission_page():
 @app.route('/Zipcode_Recommender', methods=['POST'])
 def list_zipcodes():
     ages = str(request.form['ages'])
-    age_lst = [int(x) for x in ages.split()]
-    SqFtLiving = str(request.form['SqFtLiving'])
-    Bedrooms = str(request.form['Bedrooms'])
+    lst = re.split('; |, |\*|\t| |,|;',ages)
+    age_lst = [int(x) for x in lst]
+    # SqFtLiving = str(request.form['SqFtLiving'])
+    num1 = str(request.form['SqFtLiving'])
+    if int(num1) <= 500:
+        SqFtLiving = '500'
+    elif int(num1) >= 12400:
+        SqFtLiving = '12400'
+    else:
+        SqFtLiving = num1
+    num2 = str(request.form['Bedrooms'])
+    if int(num2) <= 0:
+        Bedrooms = '0'
+    elif int(num2) >= 34:
+        Bedrooms = '34'
+    else:
+        Bedrooms = num2
+    # Bedrooms = str(request.form['Bedrooms'])
     output_table = Output.output_html(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
     fig = Output.outplot(Matrix, age_lst, float(SqFtLiving), float(Bedrooms))
     image_file = StringIO()
