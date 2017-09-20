@@ -66,8 +66,11 @@ def submission_page():
 @app.route('/Zipcode_Recommender', methods=['POST'])
 def list_zipcodes():
     ages = str(request.form['ages'])
-    lst = re.split('; |, |\*|\t| |,|;',ages)
-    age_lst = [int(x) for x in lst]
+    if len(ages) == 0:
+        age_lst = []
+    else:
+        lst = re.split('; |, |\*|\t| |,|;',ages)
+        age_lst = [int(x) for x in lst]
     # SqFtLiving = str(request.form['SqFtLiving'])
     num1 = str(request.form['SqFtLiving'])
     if int(num1) <= 500:
