@@ -110,12 +110,14 @@ def list_zipcodes():
     img {width:1250px; height: auto;}
     iframe {position:absolute; top:396px; left:742px; right:0; bottom:0; height:100%;
     width:100%;}
-    h2 {font-family: Arial; color: white; color: white; text-shadow: 2px 2px 4px #000000;}
+    h3 {font-family: Arial; color: white; color: white; text-shadow: 2px 2px 4px #000000;}
     .highlight {background-color: red;}
     </style>
     </head>
-    <h2>Click on the column names to sort the table.</h2>
-    <h2>Click on the rows to show the zipcode in GoogleMaps.</h2>
+    <h3>Click on the column names to sort the table.</h3>
+    <h3>ES, MS, HS represents the allocated public school ratings.</h3>
+    <h3>Average private school (K-12) cost is abbreviated as PrvEd Cst.</h3>
+    <h3>Click on the rows to show the zipcode in GoogleMaps.</h3>
     """
     image = '<img  src="data:image/png;base64,' + base64.b64encode(image_file.read()) + '"/>'
     gmap = """
