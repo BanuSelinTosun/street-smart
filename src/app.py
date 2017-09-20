@@ -108,7 +108,7 @@ def list_zipcodes():
     body {background-image: url("static/Seattle_SeaFront.jpg");
     background-size:cover;}
     img {width:1250px; height: auto;}
-    iframe {position:absolute; top:396px; left:742px; right:0; bottom:0; height:100%;
+    iframe {position:absolute; top:458px; left:742px; right:0; bottom:0; height:100%;
     width:100%;}
     h3 {font-family: Arial; color: white; color: white; text-shadow: 2px 2px 4px #000000;}
     .highlight {background-color: red;}
