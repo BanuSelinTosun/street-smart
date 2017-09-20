@@ -52,7 +52,7 @@ def submission_page():
         </tr>
         <tr>
           <td> The age of each kid in the household, (in format e.g. 1 2 3)
-               If not don't have kids and not planning to, just leave it empty.
+               If kids are not a part of the plan, just leave it empty.
           </td>
           <td> <input type="text" name="ages" /> </td>
         </tr>
