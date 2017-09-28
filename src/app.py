@@ -18,9 +18,10 @@ with open ('../google_api_key') as f:
 def submission_page():
     return '''
         <h1>Maximize Your Family's Real Estate Investment</h1>
-        <h2>The details of this work is explained in the GitHub repo below:</h2>
-	<h2>https://github.com/BanuSelinTosun/street-smart</h2>
-	<p> Seattle house prices are going up rapidly.
+        <h3>The details of this work is explained in this
+	       <a href="https://github.com/BanuSelinTosun/street-smart">GitHub Repo</a>
+        </h3>
+	    <p> Seattle house prices are going up rapidly.
             Everyone is on a budget; how should you invest your money?
         </p>
         <p>
@@ -36,8 +37,10 @@ def submission_page():
         </p>
         <style type="text/css">
         h1 {font-family: Arial; color: white; color: white; text-shadow: 2px 2px 4px #000000;}
-        h2 {font-family: Arial; color: white; color: white; text-shadow: 2px 2px 4px #000000;}
-	p {font-family: Arial; font-weight: bold; color: white;
+        h3 {font-family: Arial; color: white; color: white; text-shadow: 2px 2px 4px #000000;}
+	    p {font-family: Arial; font-weight: bold; color: white;
+        text-shadow: 2px 2px 4px #000000;}
+        a {font-family: Arial; font-weight: bold; color: white;
         text-shadow: 2px 2px 4px #000000;}
         tr {font-family: Arial; color: white; font-weight: bold}
         body {background-image: url("static/Seattle_SeaFront.jpg"); background-size:cover; text-shadow: 2px 2px 4px #000000;}
