@@ -1,14 +1,14 @@
 # STREET SMART
 # Maximize Your Family's Real Estate Investment
 
-### A Zipcode Recommender in city of Seattle for optimized Real-Estate and Schoolings: http://www.street-smart-realty.com/
-
-<img alt="Seattle_RE_Last10Years" src="./img/Seattle_RE_Last10Years.png" height="350" width="700" />
+### A Zipcode Recommender in Seattle city for Real-Estate: http://www.street-smart-realty.com/
 
 Seattle Real-Estate Market is booming and will continue to grow.
 Living on rent is good, but buying a house is a better investment.
 What are criteria for this best investment? How can you decide on the best option for what your money's worth?
 You may want to consider the schooling options as well.
+
+<img alt="Seattle_RE_Last10Years" src="./img/Seattle_RE_Last10Years.png" height="350" width="700" />
 
 Here, with this app, you can find min/max housing estimates for each Zipcode and the public school ratings with respect to the assigned districts, and a comparison of the private schooling cost with respect to each kids age in the household. And, it is ok if you planning to have kids x many years down the road, the private schooling calculation captures it all...
 
@@ -18,7 +18,7 @@ Here, with this app, you can find min/max housing estimates for each Zipcode and
 Main data sources are:
 * King County
 * Seattle Public Schools
-* Great School_Ratings
+* GreatSchool.com
 * Zillow
 
 QGIS is used for associating the parcel numbers to public school districts.
@@ -34,15 +34,22 @@ Sample parcel allocation to HS District: This example is using Ballard High Scho
 ## Data Cleaning:
 Classic Feature Engineering methods are applied.
 * Data is limited to 100,000.0$ and 2,000,000.0$ for the general purpose of the problem.
-* To consider only houses, the living number of units are filtered to 2.
-* For the accuracy of the model, the data prior to 1985 is discarded.
+* To consider only single-family houses, the living number of units are filtered to 2.
+* For the reliability of the model, the data prior to 1985 is discarded.
 
 ![Seattle_Real_Estate_Historical_Data](./img/Seattle_Real_Estate_Historical_Data.png)
 
 ## Modelling:
-Various regressors methods, with GridSearch of respective hyper-parameters, are screened; which are Random Forest Regressor, Gradient Boosting Regressor, Elastic Net CV, Support Vector Regressor, and Linear Regression. Among these, the best error margin is achieved by Random Forest Regressor, with 12.27% median absolute percent error. The best GridSearch of Gradient Boosting Regressor provided 11.30% median absolute percent error. This is also included in the codes, and the jupyter notebooks. Zillow's current median absolute percent error is 5.4 % for Seattle city.
+Various regressors methods, with GridSearch of respective hyper-parameters, are screened: which are Random Forest Regressor, Gradient Boosting Regressor, Elastic Net CV, Linear and Polynomial Support Vector Regressors, and Linear Regression. Among these, the best results are achieved using Random Forest Regressor with 12.27% median absolute percent error and Gradient Boosting Regressor with 11.30% median absolute percent error. This is also included in the codes, and the jupyter notebooks. Zillow's current median absolute percent error is 5.4 % for Seattle city.
 
+Below is the Residuals Plot: x-axis representing the log of true real-estate cost, y-axis is the log of the ratio of the predicted real-estate cost to true real-estate cost.
+<img alt="Tools" src="./img/ResidualsPlot.png" height="150" width="300" />
+
+The tools that are used in this projects are listed below, but limited to:
 <img alt="Tools" src="./img/Tools.PNG" height="300" width="600" />
+
+The feature importance concluded that, not surprisingly, the age of the transaction and sq ft of living are the most crucial parameters. Interestly, the high school rating is also listed in the three features that decides on the real-estate cost.
+<img alt="Tools" src="./img/Zoomed_FeatureImportance.png" height="150" width="300" />
 
 ## How to make the app work:
 
