@@ -50,7 +50,7 @@ The tools used in this projects are listed below, but limited to:
 <img alt="Tools" src="./img/Tools.PNG" height="300" width="600" />
 
 The feature importance concluded that, not surprisingly, the age of the transaction and sq ft of living are the most crucial parameters. Interestly, the high school rating is also listed in the three features that decides on the real-estate cost.
-<img alt="Tools" src="./img/Zoomed_FeatureImportance.png" height="450" width="300" />
+<img alt="Tools" src="./img/Zoomed_FeatureImportance.png" height="750" width="500" />
 
 ## How to make the app work:
 
