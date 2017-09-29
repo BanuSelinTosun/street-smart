@@ -44,9 +44,9 @@ Various regressors methods, with GridSearch of respective hyper-parameters, are 
 
 Below is the Residuals Plot: x-axis representing the log of true real-estate cost, y-axis is the log of the ratio of the predicted real-estate cost to true real-estate cost.
 
-<img alt="Tools" src="./img/ResidualsPlot.png" height="400" width="600" />
+<img alt="Tools" src="./img/ResidualsPlot.png" height="300" width="450" />
 
-The feature importance concluded that, not surprisingly, the age of the transaction and sq ft of living are the most crucial parameters. Interestly, the high school rating is also listed in the three features that decides on the real-estate cost.
+The feature importance concluded that, not surprisingly, the age of the transaction and sq ft of living are the most crucial parameters. Interestingly, the high school rating is also listed in the three features that decides on the real-estate cost over 80 features considered during modelling. The top ten are shown below:
 <img alt="Tools" src="./img/Zoomed_FeatureImportance.png" height="750" width="500" />
 
 The tools used in this projects are listed below, but limited to:
