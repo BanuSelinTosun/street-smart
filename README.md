@@ -50,7 +50,7 @@ The feature importance concluded that, not surprisingly, the age of the transact
 <img alt="Tools" src="./img/Zoomed_FeatureImportance.png" height="675" width="450" />
 
 The tools used in this projects are listed below, but limited to:
-<img alt="Tools" src="./img/Tools.PNG" height="300" width="600" />
+<img alt="Tools" src="./img/ToolBox.png" height="300" width="750" />
 
 ## How to make the app work:
 
